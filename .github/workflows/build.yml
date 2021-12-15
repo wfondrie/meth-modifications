@@ -27,10 +27,10 @@ jobs:
         dotnet-version: 5.0.x
 
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore $env.Solution_Name
       
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build $env.Solution_Name --configuration Release --no-restore
       
     # See what we built?
     - name: look around
