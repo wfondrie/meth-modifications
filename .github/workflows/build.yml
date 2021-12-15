@@ -25,8 +25,10 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
     
     # Build the application.
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /p:RestorePackagesConfig=true /t:restore;build /p:Configuration=Release
+    - name: Build the application
+      run: |
+        msbuild $env:Solution_Name /p:RestorePackagesConfig=true /t:restore /p:Configuration=Release
+        msbuild $env:Solution_Name /p:Configuration=Release
       
     # See what we built?
     - name: look around
