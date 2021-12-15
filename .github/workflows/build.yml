@@ -38,4 +38,4 @@ jobs:
        ls -lh ..
        ls -lh xmlmethodchanger/XmlMethodChanger.cmd
        ls -lh xmlmethodchanger/XmlMethodChanger.lib
-       ls -lh ../XmlMethoChanger/
+       ls -lh xmlmethodchanger
