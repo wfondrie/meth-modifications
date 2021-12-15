@@ -1,0 +1,41 @@
+name: Build the application
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: windows-latest  
+
+    env:
+      Solution_Name: xmlmethodchanger/XmlMethodChanger.sln
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+    
+    # Build the application.
+    - name: Restore the application
+      run: msbuild $env:Solution_Name /p:Configuration=Release
+      
+    # See what we built?
+    - name: look around
+      shell: bash
+      run: |
+        ls -lh . && ls -lh xmlmethodchanger
