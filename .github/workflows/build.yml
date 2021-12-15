@@ -20,19 +20,13 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-
-    - name: Install dependencies
-      run: |
-        dotnet add $env:Solution_Name package CommandLineParser --version 2.8.0
-        dotnet restore $env:Solution_Name
-      
-    - name: Build
-      run: dotnet build $env:Solution_Name --configuration Release --no-restore
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+    
+    # Build the application.
+    - name: Restore the application
+      run: msbuild $env:Solution_Name /p:RestorePackagesConfig=true /t:restore /p:Configuration=Release
       
     # See what we built?
     - name: look around
