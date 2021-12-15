@@ -26,7 +26,7 @@ jobs:
     
     # Build the application.
     - name: Restore the application
-      run: msbuild $env:Solution_Name /p:RestorePackagesConfig=true /t:restore /p:Configuration=Release
+      run: msbuild $env:Solution_Name /p:RestorePackagesConfig=true /t:restore;build /p:Configuration=Release
       
     # See what we built?
     - name: look around
