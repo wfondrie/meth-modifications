@@ -34,4 +34,4 @@ jobs:
     - name: look around
       shell: bash
       run: |
-       ls -lh xmlmethodchanger/bin
+       ls -lh xmlmethodchanger/bin/Release
