@@ -32,10 +32,13 @@ jobs:
     
     # Build the application.
     - name: Restore the application
-      run: msbuild $env:Solution_Name /t:restore /p:Configuration=Release
+      run: msbuild $env:Solution_Name /t:restore /p:Configuration=debug
       
     # See what we built?
     - name: look around
       shell: bash
       run: |
-       ls -lh xmlmethodchanger/XmlMethodChanger.cmd && ls -lh xmlmethodchanger/XmlMethodChanger.lib
+       ls -lh .
+       ls -lh 
+       ls -lh xmlmethodchanger/XmlMethodChanger.cmd
+       ls -lh xmlmethodchanger/XmlMethodChanger.lib
