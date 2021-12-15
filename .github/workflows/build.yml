@@ -27,7 +27,9 @@ jobs:
         dotnet-version: 5.0.x
 
     - name: Install dependencies
-      run: dotnet restore $env:Solution_Name
+      run: |
+        dotnet add $env:Solution_Name package CommandLineParser --version 2.8.0
+        dotnet restore $env:Solution_Name
       
     - name: Build
       run: dotnet build $env:Solution_Name --configuration Release --no-restore
