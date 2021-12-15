@@ -34,8 +34,4 @@ jobs:
     - name: look around
       shell: bash
       run: |
-       ls -lh .
-       ls -lh ..
-       ls -lh xmlmethodchanger/XmlMethodChanger.cmd
-       ls -lh xmlmethodchanger/XmlMethodChanger.lib
-       ls -lh xmlmethodchanger
+       ls -lh xmlmethodchanger/bin
