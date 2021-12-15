@@ -26,19 +26,18 @@ jobs:
       with:
         dotnet-version: 5.0.x
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.2
-    
-    # Build the application.
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:restore /p:Configuration=debug
+    - name: Install dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
       
     # See what we built?
     - name: look around
       shell: bash
       run: |
        ls -lh .
-       ls -lh 
+       ls -lh ..
        ls -lh xmlmethodchanger/XmlMethodChanger.cmd
        ls -lh xmlmethodchanger/XmlMethodChanger.lib
+       ls -lh ../XmlMethoChanger/
