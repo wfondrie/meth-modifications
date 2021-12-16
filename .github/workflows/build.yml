@@ -30,8 +30,8 @@ jobs:
         msbuild $env:Solution_Name /p:RestorePackagesConfig=true /t:restore /p:Configuration=Release
         msbuild $env:Solution_Name /p:Configuration=Release
       
-    # See what we built?
-    - name: look around
-      shell: bash
-      run: |
-       ls -lh xmlmethodchanger/bin/Release
+    - name: Upload build artificats
+      uses: actions/upload-artifact@v2
+      with:
+        name: XmlMethodChanger
+        path: xmlmethodchanger/bin/Release/*
